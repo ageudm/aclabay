@@ -1,0 +1,475 @@
+/*
+    PROJECTO COM ESTRUTURA MOBILE E RESPONSIVA
+ */
+
+/* **************
+    WEB FONTS
+********************* */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+
+/* **************
+    VARIAVEIS E CONFIGURAÇÃO
+****************************** */
+
+:root
+{
+    /* color */
+    --first-color: hsl(349, 83%, 58%);
+    --second-color: hsl(45, 100%, 58%);
+    --light-color: hsl(0, 0%, 100%);
+    --dark-color: hsl(0, 0%, 11%);
+    --title-color: hsl(223, 12%, 14%);
+    --text-color: hsl(223, 12%, 20%);
+    --body-color: hsl(228, 45%, 98%);
+
+    /* fonts */
+    --body-font: "Poppins", sans-serif;
+    --normal-font-size: .938rem;
+    --samall-font-size: .813rem;
+    --smailler-font-size: .75rem;
+
+    /* tipograph */
+    --font-medium: 500;
+    --font-semi-bold: 600;
+    --font-bold: 700;
+
+    /* z-index */
+    --z-tooltip: 10;
+    --z-fixed: 100;
+
+    /* fixed heigt & width */
+    --header-height: 3.5rem;
+
+    /* radius */
+    --border-radius: 10px;
+
+    /* animation */
+    --transition-3s: 0.3s;
+    --transition-5s: 0.5s;
+}
+
+/* Tamanho para Desktop */
+@media screean and (min-width: 1024px)
+{
+    :root
+    {
+         /* fonts */
+     --body-font: "Poppins", sans-serif;
+     --normal-font-size: .1rem;
+     --samall-font-size: .875rem;
+     --smailler-font-size: .813rem;
+    }
+}
+
+
+/* **************
+    BASE
+****************************** */
+
+*
+{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html
+{
+    scroll-behavior: smooth;
+}
+
+body, input, button
+{
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+body
+{
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+
+input, button
+{
+    border: none;
+    outline: none;
+}
+
+ul
+{
+    list-style: none;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+img
+{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* **************
+    UTILITY CLASS
+****************************** */
+.container
+{
+    max-width: 1120px;
+    margin-inline: 1.5rem;
+}
+
+.container-sm
+{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.flex
+{
+    display: flex;
+    gap: 1rem;
+}
+
+.grid
+{
+    display: grid;
+    gap: 1rem;
+}
+
+.card
+{
+    padding: 1rem;
+    border-radius: var(--border-radius);
+}
+
+.btn
+{
+    display: inline-block;
+    padding: 13px 20px;
+    font-weight: var(--font-medium);
+    text-align: center;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition-5s);
+}
+
+/* **************
+    MENU
+****************************** */
+.header
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--body-color);
+    box-shadow: 0 2px 8px hsl(223, 12%, 14%, .03);
+    z-index: var(--z-fixed);
+}
+
+.nav
+{
+    height: var(--header-height);
+    padding: 1rem 0;
+}
+
+.nav-data
+{
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo
+{
+    display: inline-flex;
+    align-items: center;
+    column-gap: .50rem;
+    color: var(--title-color);
+    font-weight: var(--font-semi-bold);
+    transition: var(--transition-3s);
+}
+
+.nav-logo img
+{
+    width: 1rem;
+}
+
+.search-button, .login-button
+{
+    font-size: 1.10rem;
+    color: var(--title-color);
+    cursor: pointer;
+}
+
+.action-desktop
+{
+    display: flex;
+    gap: 1rem;
+    display: none;
+}
+
+.nav-toggle
+{
+    position: relative;
+    width: 1rem;
+}
+
+.nav-toggle-menu, .nav-toggle-menu-close
+{
+    position: absolute;
+    display: grid;
+    place-items: center;
+    inset: 0;
+    font-size: 1.10rem;
+    color: var(--title-color);
+    cursor: pointer;
+    transition: opacity .1s, var(--transition-3s);
+}
+
+.nav-toggle-menu-close
+{
+    opacity: 0;
+}
+
+.nav-link
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    color: var(--title-color);
+    transition: var(--transition-3s);
+}
+
+/* dropdown menu */
+.dropdown-button
+{
+    cursor: pointer;
+}
+
+.dropdown-arrow
+{
+    font-size: 1.3rem;
+    transition: var(--transition-5s);
+}
+
+.dropdown-container
+{
+    height: 0;
+    overflow: hidden;
+    transition: var(--transition-3s);
+}
+
+.dropdown-content
+{
+    /* grid-template-columns: 1fr; */
+    row-gap: 1.75rem;
+    padding: 1.5rem;
+}
+
+.dropdown-group
+{
+    align-items: center;
+    justify-content: space-around;
+    grid-template-columns: 45px 1fr;
+    padding-left: 1.5rem;
+}
+
+.dropdown-info
+{
+    display: grid;
+    gap: .25rem;
+}
+
+.dropdown-icon
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    color: var(--light-color);
+    font-size: 1.5rem;
+    border-radius: 50%;
+    background-color: var(--first-color);
+}
+
+.dropdown-title
+{
+    font-weight: var(--font-semi-bold);
+    color: var(--title-color);
+}
+
+.dropdown-text
+{
+    font-size: var(--samall-font-size);
+}
+
+.show-dropdown .dropdown-arrow
+{
+    transform: rotate(180deg);
+}
+
+/* menu para mobile */
+
+@media screen and (max-width: 765px)
+{
+    .nav-menu
+    {
+        background: var(--body-color);
+        position: absolute;
+        left: 0;
+        top: 2.5rem;
+        width: 100%;
+        height: calc(100vh - 4.5rem);
+        overflow: auto;
+        padding-block: 1.5rem 4rem;
+        pointer-events: none;
+        opacity: 0;
+        transition: top var(--transition-3s), opacity var(--transition-3s);
+    }
+
+    /* barra de rolagem */
+    .nav-menu::-webkit-scrollbar
+    {
+        width: .3rem;
+    }
+
+    .nav-menu::-webkit-scrollbar-thumb
+    {
+        background-color: var(--text-color);
+        border: none;
+        border-radius: 1rem;
+    }
+}
+
+/* manipulação do menu mobile com javascript */
+.show-menu
+{
+    opacity: 1;
+    top: 3.5rem;
+    pointer-events: initial;
+}
+
+.show-icon .nav-toggle-menu
+{
+    opacity: 0;
+    transform: rotate(90deg);
+}
+
+.show-icon .nav-toggle-menu-close
+{
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+/*menu para desktop */
+@media screen and (min-width: 765px)
+{
+    .container
+    {
+        margin-inline: auto;
+        padding-inline: 1.5rem;
+    }
+
+    .nav
+    {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: calc(--header-height + 2rem);
+    }
+
+    .nav-actions
+    {
+        display: none;
+    }
+
+    .nav-list
+    {
+        display: flex;
+        align-items: center;
+        column-gap: 3rem;
+        height: 100%;
+    }
+
+    .nav-list li
+    {
+        display: flex;
+    }
+
+    .nav-link
+    {
+        padding: 0;
+    }
+
+    .dropdown-button
+    {
+        column-gap: .25rem;
+        pointer-events: initial;
+    }
+
+    .dropdown-container
+    {
+        height: max-content;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 6.5rem;
+        border-radius: 0 0 var(--border-radius) var(--border-radius);
+        background-color: var(--body-color);
+        box-shadow: 0 6px 8px hsl(223, 12%, 14%, .03);
+        pointer-events: none;
+        opacity: 0;
+        transition: top var(--transition-5s), opacity var(--transition-5s);
+    }
+
+    .dropdown-item {
+        cursor: pointer;
+    }
+
+    .dropdown-item:hover .dropdown-arrow {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-item:focus > .dropdown-container,
+    .dropdown-item:hover > .dropdown-container {
+        top: 3.5rem;
+        opacity: 1;
+        pointer-events: initial;
+        cursor: initial;
+    }
+
+    .dropdown-content {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        width: 1120px;
+        padding-inline: 1;
+        margin-inline: auto;
+    }
+
+    .dropdown-group {
+        padding: 2rem 0;
+        align-content: baseline;
+        row-gap: 1.25rem;
+    }
+
+    .dropdown-group:first-child,
+    .dropdown-group:last-child {
+        margin: 0;
+    }
+}
+
+
+
+
